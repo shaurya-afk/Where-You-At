@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<title>Where You At?</title>
+</head>
+
+<style>
+	#user_name{
+		display: flex;
+		width: 650px;
+		position: relative;
+		left: 25%;
+		top: 145px;
+	}
+	h1{
+		position: relative;
+		left: 35%;
+		top: 110px;
+		width: 350px;
+		text-align: center;
+		justify-content: center;
+	}
+	</style>
+<body>
+	<h1>Where You At?</h1>
+	<form action="/map" method="get">
+		<div class="input-group mb-3" id="user_name">
+			<input type="text" class="form-control" placeholder="enter your name..." aria-label="Username" name="username" id="uname" aria-describedby="basic-addon1">
+			<a href="/map">
+				<button type="button" class="btn btn-success">Enter</button>
+			</a>
+		</div>
+	</form>
+	<script src="/js/script.js"></script>
+</body>
+</html>

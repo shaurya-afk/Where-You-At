@@ -6,14 +6,20 @@
 	<title>Map</title>
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<p class="status_msg"></p>
+	<div style="text-align: center; justify-content: center;" class="info">
+		<p class="status_msg"></p>
+		<p class="uniquekey"></p>
+	</div>
 	<div id="map"></div>
 
 	<script>
-		const username = "<%=username%>";
-		document.querySelector(".status_msg").textContent = `logged in as ${username}`;
+		var username = "<%=username%>";
+		var u_key = "<%= id %>";
 	</script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

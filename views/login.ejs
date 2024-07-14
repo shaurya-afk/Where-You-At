@@ -25,12 +25,14 @@
 		text-align: center;
 		justify-content: center;
 	}
-	</style>
+</style>
+
 <body>
 	<h1>Where You At?</h1>
 	<form action="/map" method="get">
 		<div class="input-group mb-3" id="user_name">
 			<input type="text" class="form-control" placeholder="enter your name..." aria-label="Username" name="username" id="uname" aria-describedby="basic-addon1">
+			<input type="hidden" name="id" value="<%= id %>"> 
 			<a href="/map">
 				<button type="button" class="btn btn-success">Enter</button>
 			</a>

@@ -1,14 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   const socket = io(); // connection request is sent to back-end
 
-  const inputElement = document.querySelector("#uname");
-  console.log("Input Element:", inputElement); // Check if inputElement is null or the actual input element
-  const user_name = inputElement ? inputElement.value : ""; // Safely access value if element exists
-  console.log("Username:", user_name); // Log username to verify
-
   let lastUpdatedTime = 0;
   const updateInterval = 5000; // 5 seconds
   const statusMsg = document.querySelector(".status_msg");
+  const uniq_key = document.querySelector(".uniquekey");
+
   statusMsg.textContent = "locating...";
 
   if (navigator.geolocation) {
@@ -19,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
           lastUpdatedTime = curr_time;
           const { latitude, longitude } = pos.coords;
           socket.emit("send-location", {
-            name: user_name,
+            name: username, // helps to display the username
             latitude: latitude.toFixed(5),
             longitude: longitude.toFixed(5),
           });
@@ -62,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .openPopup();
     }
     statusMsg.textContent = `${name} connected!!`;
+    uniq_key.textContent = `your unique key is: ${u_key}`;
   });
 
   socket.on("user-disconnect", (id) => {
@@ -69,6 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
       map.removeLayer(markers[id]);
       delete markers[id];
     }
-    statusMsg.textContent = `user disconnected!!`;
+    statusMsg.textContent = `${name} disconnected!!`;
   });
 });

@@ -17,6 +17,13 @@
 		left: 25%;
 		top: 145px;
 	}
+	#join_user{
+		display: flex;
+		width: 650px;
+		position: relative;
+		left: 25%;
+		top: 145px;
+	}
 	h1{
 		position: relative;
 		left: 35%;
@@ -29,13 +36,17 @@
 
 <body>
 	<h1>Where You At?</h1>
-	<form action="/map" method="get">
+	<form action="/host" method="get">
 		<div class="input-group mb-3" id="user_name">
-			<input type="text" class="form-control" placeholder="enter your name..." aria-label="Username" name="username" id="uname" aria-describedby="basic-addon1">
-			<input type="hidden" name="id" value="<%= id %>"> 
-			<a href="/map">
-				<button type="button" class="btn btn-success">Enter</button>
-			</a>
+			<input type="text" class="form-control" placeholder="enter your name to host..." aria-label="Username" name="username" id="uname" aria-describedby="basic-addon1" required>			
+			<button type="submit" class="btn btn-success">Host</button>
+		</div>
+	</form>
+	<form action="/join" method="get">
+		<div class="input-group mb-3" id="join_user">
+			<input type="text" class="form-control" placeholder="enter unique key to join..." aria-label="Unique Key" name="unique_key" id="uni_key" aria-describedby="basic-addon1" required>			
+			<input type="text" class="form-control" placeholder="enter your guest name to join..." aria-label="Guest Name" name="guest_name" id="gue_name" aria-describedby="basic-addon1" required>			
+			<button type="submit" class="btn btn-success">Join</button>
 		</div>
 	</form>
 	<script src="/js/script.js"></script>

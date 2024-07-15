@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const socket = io(); // connection request is sent to back-end
 
   let lastUpdatedTime = 0;
-  const updateInterval = 5000; // 5 seconds
+  const updateInterval = 3500; // 3.5 seconds
   const statusMsg = document.querySelector(".status_msg");
   const uniq_key = document.querySelector(".uniquekey");
 
@@ -58,15 +58,19 @@ document.addEventListener("DOMContentLoaded", function () {
         .bindPopup(name)
         .openPopup();
     }
-    statusMsg.textContent = `${name} connected!!`;
-    uniq_key.textContent = `your unique key is: ${u_key}`;
+    statusMsg.textContent = `${name} online!!`;
   });
 
-  socket.on("user-disconnect", (id) => {
+  socket.on("user-disconnect", (data) => {
+    const {id, username} = data;
     if (markers[id]) {
       map.removeLayer(markers[id]);
       delete markers[id];
     }
-    statusMsg.textContent = `${name} disconnected!!`;
+    statusMsg.textContent = `${username} offline!!`;
+  });
+
+  socket.on('unique-key',(key) => {
+    uniq_key.textContent = `your unique key is ${key}`;
   });
 });

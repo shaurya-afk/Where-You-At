@@ -10,12 +10,22 @@
 	<script src="/js/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 </head>
+<style>
+	.info{
+		text-align: center;
+		justify-content: center;
+	}
+</style>
 <body>
-	<div style="text-align: center; justify-content: center;" class="info">
+	<div class="info">
 		<p class="status_msg"></p>
 		<p class="uniquekey"></p>
 	</div>
 	<div id="map"></div>
+
+	<!-- <div class="chat">
+		<input type="text" placeholder="here...">
+	</div> -->
 
 	<script>
 		var username = "<%=username%>";

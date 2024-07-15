@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const users = {};
+const keys = {};
 
 io.on('connection', function (socket){
 	socket.on("send-location", function(data){
@@ -25,22 +26,34 @@ io.on('connection', function (socket){
 		delete users[socket.id];
 	});
 
+	const uniqueKey = uuidv4();
+	keys[uniqueKey] = socket.id;
+	socket.emit('unique-key', uniqueKey);
+
 	socket.on('disconnect',function(){
-		io.emit('user-disconnect', socket.id);
+		const username = users[socket.id];
+		io.emit('user-disconnect', {id: socket.id, name: username});
 	});
 });
 
 app.get('/', (req, res) => {
-	const id = uuidv4();
-	console.log(`your unique key: ${id}`);
-	res.render('login', {id});
+	res.render('login');
 });
 
-app.get('/map', (req, res) => {
+app.get('/host', (req, res) => {
 	const username = req.query.username;
-	const id = req.query.id;
+	const id = uuidv4();
 	res.render('index',{username, id});
 });
 
+app.get('/join', (req, res) => {
+	const {unique_key, guest_name} = req.query;
+	const socket_id = keys[unique_key];
+	if(socket_id){
+		res.render('index',{username: guest_name, id: socket_id});
+	}else{
+		res.render('notFound',{id:socket_id});
+	}
+})
 
-server.listen(3000);
+server.listen(3000, () => {console.log('starting on port 3000...')});

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<title>Not Found</title>
+</head>
+
+<style>
+	#join_user{
+		display: flex;
+		width: 650px;
+		position: relative;
+		left: 25%;
+		top: 145px;
+	}
+</style>
+
+<body>
+	<div class="container" style="text-align: center; justify-content: center;">
+		<h1>user not found!!</h1>
+		<p>check the key</p>
+		<form action="/join" method="get">
+			<div class="input-group mb-3" id="join_user">
+				<input type="text" class="form-control" placeholder="enter unique key to join..." aria-label="Unique Key" name="unique_key" id="uni_key" aria-describedby="basic-addon1" required>
+				<input type="text" class="form-control" placeholder="enter your guest name to join..." aria-label="Guest Name" name="guest_name" id="gue_name" aria-describedby="basic-addon1" required>		
+				<button type="submit" class="btn btn-success">Join</button>
+			</div>
+		</form>	
+	</div>
+</body>
+</html>

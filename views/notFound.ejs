@@ -17,6 +17,12 @@
 		left: 25%;
 		top: 145px;
 	}
+	#back_btn{
+		display: flex;
+		position: relative;
+		left: 50%;
+		top: 155px;
+	}
 </style>
 
 <body>
@@ -28,6 +34,11 @@
 				<input type="text" class="form-control" placeholder="enter unique key to join..." aria-label="Unique Key" name="unique_key" id="uni_key" aria-describedby="basic-addon1" required>
 				<input type="text" class="form-control" placeholder="enter your guest name to join..." aria-label="Guest Name" name="guest_name" id="gue_name" aria-describedby="basic-addon1" required>		
 				<button type="submit" class="btn btn-success">Join</button>
+			</div>
+		</form>	
+		<form action="/" method="get">
+			<div class="input-group mb-3" id="back_btn">
+				<button type="submit" class="btn btn-danger">Back</button>
 			</div>
 		</form>	
 	</div>
